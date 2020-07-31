@@ -1,0 +1,203 @@
+// needs cleaning up
+// initial vars and dark mode alt
+:root {
+  --dark: #000;
+  --light: #fff;
+  --medium: #efefef;
+  --flyout: 250px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --dark: #fff;
+    --light: #000;
+    --medium: #efefef;
+    --flyout: 250px;
+  }
+}
+
+body {
+  background-color: var(--light);
+  font-family: sans-serif;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  padding: 1rem 2rem;
+  align-items: center;
+
+  .logo {
+    font-size: 2rem;
+    font-weight: 900;
+    display: flex;
+    align-content: center;
+    justify-self: flex-start;
+    height: 100%;
+    background: var(--dark);
+    color: var(--light);
+    padding: 0.5rem;
+    text-transform: uppercase;
+  }
+
+  .hamburger {
+    margin-left: auto;
+    align-self: flex-end;
+  }
+}
+
+#nav-toggle {
+  position: absolute;
+  opacity: 0;
+  display: none;
+}
+
+.menu {
+  position: fixed;
+  right: -100%;
+  top: 0;
+
+  height: 100%;
+  width: var(--flyout);
+}
+
+#nav-toggle {
+  ~label {
+    box-shadow: 1px 0px 11px 2px rgba(0, 0, 0, 0.37);
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s transform;
+    transition-timing-function: cubic-bezier(0.38, 0.52, 0.37, 1.27);
+    background-color: var(--dark);
+    color: var(--light);
+    padding: 0;
+    border-radius: 3px;
+    padding: 1rem;
+    text-align: center;
+  }
+}
+
+.toggle-words {
+  font-size: 1.5rem;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+#nav-toggle:checked {
+  ~label {
+    background-color: red;
+    color: var(--light);
+    transform: translateX(calc(-1 * var(--flyout)));
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:before {
+      font-family: "Font Awesome\ 5 Free";
+      font-size: 1.5rem;
+      content: "\f00d";
+    }
+
+    .toggle-words {
+      display: none;
+    }
+  }
+
+  ~.menu {
+    // Slides the nav out
+    transform: translateX(-100vw);
+  }
+}
+
+.menu {
+  box-shadow: 1px 0px 11px 5px rgba(0, 0, 0, 0.37);
+  background-color: var(--dark);
+  transition: 0.53s transform;
+  transition-timing-function: cubic-bezier(0.38, 0.52, 0.37, 1);
+
+  ul {
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    list-style: none;
+
+    a {
+      text-decoration: none;
+      background-color: var(--medium);
+      color: var(--black);
+      padding: 20px;
+      display: block;
+      border-bottom: 1px solid var(--dark);
+
+      &:hover {
+        background: var(--light);
+        color: var(--dark);
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.social {
+  width: 100%;
+}
+
+.social ul {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+
+  li {
+    flex: 1;
+
+    a {
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      color: var(--dark);
+    }
+  }
+
+  li+li {
+    border-left: 1px solid var(--dark);
+  }
+}
+
+main {
+  margin: 2rem;
+  display: flex;
+  flex-direction: column;
+  background: var(--medium);
+  padding: 2rem;
+
+  *+* {
+    margin-top: 1.5rem;
+  }
+}
+
+h1 {
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+//accessibility
+.a11y {
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  margin: -1px;
+}

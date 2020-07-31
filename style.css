@@ -1,0 +1,224 @@
+/* needs cleaning up and some better organization */
+
+:root {
+  --dark: #000;
+  --light: #fff;
+  --medium: #efefef;
+  --flyout: 250px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --dark: #fff;
+    --light: #000;
+    --medium: #efefef;
+    --flyout: 250px;
+  }
+}
+
+body {
+  background-color: var(--light);
+  font-family: sans-serif;
+}
+
+header {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  flex-direction: row;
+  padding: 1rem 2rem;
+  -webkit-box-align: center;
+  align-items: center;
+}
+
+header .logo {
+  font-size: 2rem;
+  font-weight: 900;
+  display: -webkit-box;
+  display: flex;
+  align-content: center;
+  justify-self: flex-start;
+  height: 100%;
+  background: var(--dark);
+  color: var(--light);
+  padding: 0.5rem;
+  text-transform: uppercase;
+}
+
+header .hamburger {
+  margin-left: auto;
+  align-self: flex-end;
+}
+
+#nav-toggle {
+  position: absolute;
+  opacity: 0;
+  display: none;
+}
+
+.menu {
+  position: fixed;
+  right: -100%;
+  top: 0;
+  height: 100%;
+  width: var(--flyout);
+}
+
+#nav-toggle~label {
+  box-shadow: 1px 0px 11px 2px rgba(0, 0, 0, 0.37);
+  text-transform: uppercase;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-transition: 0.5s -webkit-transform;
+  transition: 0.5s -webkit-transform;
+  transition: 0.5s transform;
+  transition: 0.5s transform, 0.5s -webkit-transform;
+  -webkit-transition-timing-function: cubic-bezier(0.38, 0.52, 0.37, 1.27);
+  transition-timing-function: cubic-bezier(0.38, 0.52, 0.37, 1.27);
+  background-color: var(--dark);
+  color: var(--light);
+  padding: 0;
+  border-radius: 3px;
+  padding: 1rem;
+  text-align: center;
+}
+
+.toggle-words {
+  font-size: 1.5rem;
+}
+
+.toggle-words:hover {
+  cursor: pointer;
+}
+
+#nav-toggle:checked~label {
+  background-color: red;
+  color: var(--light);
+  -webkit-transform: translateX(calc(-1 * var(--flyout)));
+  transform: translateX(calc(-1 * var(--flyout)));
+}
+
+#nav-toggle:checked~label:hover {
+  cursor: pointer;
+}
+
+#nav-toggle:checked~label:before {
+  font-family: "Font Awesome\ 5 Free";
+  font-size: 1.5rem;
+  content: "\f00d";
+}
+
+#nav-toggle:checked~label .toggle-words {
+  display: none;
+}
+
+#nav-toggle:checked~.menu {
+  -webkit-transform: translateX(-100vw);
+  transform: translateX(-100vw);
+}
+
+.menu {
+  box-shadow: 1px 0px 11px 5px rgba(0, 0, 0, 0.37);
+  background-color: var(--dark);
+  -webkit-transition: 0.53s -webkit-transform;
+  transition: 0.53s -webkit-transform;
+  transition: 0.53s transform;
+  transition: 0.53s transform, 0.53s -webkit-transform;
+  -webkit-transition-timing-function: cubic-bezier(0.38, 0.52, 0.37, 1);
+  transition-timing-function: cubic-bezier(0.38, 0.52, 0.37, 1);
+}
+
+.menu ul {
+  padding: 0;
+  margin: 0;
+}
+
+.menu li {
+  list-style: none;
+}
+
+.menu li a {
+  text-decoration: none;
+  background-color: var(--medium);
+  color: var(--black);
+  padding: 20px;
+  display: block;
+  border-bottom: 1px solid var(--dark);
+}
+
+.menu li a:hover {
+  background: var(--light);
+  color: var(--dark);
+  cursor: pointer;
+}
+
+.social {
+  width: 100%;
+}
+
+.social ul {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  flex-direction: row;
+  width: 100%;
+}
+
+.social ul li {
+  -webkit-box-flex: 1;
+  flex: 1;
+}
+
+.social ul li a {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  align-content: center;
+  color: var(--dark);
+}
+
+.social ul li+li {
+  border-left: 1px solid var(--dark);
+}
+
+main {
+  margin: 2rem;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  background: var(--medium);
+  padding: 2rem;
+}
+
+main *+* {
+  margin-top: 1.5rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+.a11y {
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  margin: -1px;
+}
